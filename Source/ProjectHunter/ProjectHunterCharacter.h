@@ -64,6 +64,20 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 	bool GetHasRifle();
 
+	/** Bool for if aiming */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Weapon)
+	bool bIsAiming;
+
+	/** Setter to set the bool */
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+		void SetIsAiming(bool bNewIsAiming);
+
+	/** Getter for the bool */
+	UFUNCTION(BlueprintCallable, Category = Weapon)
+		bool GetIsAiming();
+
+
+
 protected:
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);

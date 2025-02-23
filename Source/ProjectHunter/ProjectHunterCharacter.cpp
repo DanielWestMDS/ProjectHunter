@@ -16,6 +16,7 @@ AProjectHunterCharacter::AProjectHunterCharacter()
 {
 	// Character doesnt have a rifle at start
 	bHasRifle = false;
+	bIsAiming = false;
 	
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(55.f, 96.0f);
@@ -94,8 +95,16 @@ void AProjectHunterCharacter::Look(const FInputActionValue& Value)
 	if (Controller != nullptr)
 	{
 		// add yaw and pitch input to controller
-		AddControllerYawInput(LookAxisVector.X);
-		AddControllerPitchInput(LookAxisVector.Y);
+		if (bIsAiming)
+		{
+			AddControllerYawInput(LookAxisVector.X * 0.25);
+			AddControllerPitchInput(LookAxisVector.Y * 0.25);
+		}
+		else
+		{
+			AddControllerYawInput(LookAxisVector.X);
+			AddControllerPitchInput(LookAxisVector.Y);
+		}
 	}
 }
 
@@ -107,4 +116,14 @@ void AProjectHunterCharacter::SetHasRifle(bool bNewHasRifle)
 bool AProjectHunterCharacter::GetHasRifle()
 {
 	return bHasRifle;
+}
+
+void AProjectHunterCharacter::SetIsAiming(bool bNewIsAiming)
+{
+	bIsAiming = bNewIsAiming;
+}
+
+bool AProjectHunterCharacter::GetIsAiming()
+{
+	return bIsAiming;
 }
