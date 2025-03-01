@@ -82,8 +82,16 @@ void AProjectHunterCharacter::Move(const FInputActionValue& Value)
 	if (Controller != nullptr)
 	{
 		// add movement 
-		AddMovementInput(GetActorForwardVector(), MovementVector.Y);
-		AddMovementInput(GetActorRightVector(), MovementVector.X);
+		if (bIsAiming)
+		{
+			AddMovementInput(GetActorForwardVector(), MovementVector.Y * 0.4);
+			AddMovementInput(GetActorRightVector(), MovementVector.X * 0.4);
+		}
+		else
+		{
+			AddMovementInput(GetActorForwardVector(), MovementVector.Y);
+			AddMovementInput(GetActorRightVector(), MovementVector.X);
+		}
 	}
 }
 
