@@ -76,6 +76,18 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Weapon)
 		bool GetIsAiming();
 
+	/** Bool for if crouching */
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Movement)
+	bool bIsCrouching;
+
+	/** Setter to set the bool */
+	UFUNCTION(BlueprintCallable, Category = Movement)
+		void SetIsCrouching(bool bNewIsCrouching);
+
+	/** Getter for the bool */
+	UFUNCTION(BlueprintCallable, Category = Movement)
+		bool GetIsCrouching();
+
 
 
 protected:

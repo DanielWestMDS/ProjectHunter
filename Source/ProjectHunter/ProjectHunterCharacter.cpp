@@ -82,7 +82,7 @@ void AProjectHunterCharacter::Move(const FInputActionValue& Value)
 	if (Controller != nullptr)
 	{
 		// add movement 
-		if (bIsAiming)
+		if (bIsAiming || bIsCrouching)
 		{
 			AddMovementInput(GetActorForwardVector(), MovementVector.Y * 0.4);
 			AddMovementInput(GetActorRightVector(), MovementVector.X * 0.4);
@@ -134,4 +134,14 @@ void AProjectHunterCharacter::SetIsAiming(bool bNewIsAiming)
 bool AProjectHunterCharacter::GetIsAiming()
 {
 	return bIsAiming;
+}
+
+void AProjectHunterCharacter::SetIsCrouching(bool bNewIsCrouching)
+{
+	bIsCrouching = bNewIsCrouching;
+}
+
+bool AProjectHunterCharacter::GetIsCrouching()
+{
+	return bIsCrouching;
 }
